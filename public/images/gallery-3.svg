@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="g3Bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a2015"/>
+      <stop offset="100%" stop-color="#1a1510"/>
+    </linearGradient>
+    <radialGradient id="g3Warm" cx="50%" cy="45%" r="40%">
+      <stop offset="0%" stop-color="#c9942e" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#1a1510" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="g3Plate" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5e6c8" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#d4a843" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g3Bg)"/>
+  <rect width="800" height="600" fill="url(#g3Warm)"/>
+  <!-- Table surface -->
+  <rect x="100" y="320" width="600" height="230" rx="4" fill="#3d2e1a" opacity="0.5"/>
+  <rect x="100" y="318" width="600" height="6" rx="2" fill="#8b6914" opacity="0.15"/>
+  <!-- Main plate (oval) -->
+  <ellipse cx="400" cy="380" rx="140" ry="80" fill="url(#g3Plate)"/>
+  <ellipse cx="400" cy="380" rx="140" ry="80" fill="none" stroke="#d4a843" stroke-width="1.5" opacity="0.12"/>
+  <ellipse cx="400" cy="380" rx="120" ry="65" fill="none" stroke="#c9942e" stroke-width="0.5" opacity="0.1"/>
+  <!-- Food items - abstract shapes on plate -->
+  <ellipse cx="380" cy="370" rx="50" ry="25" fill="#8b6914" opacity="0.2"/>
+  <ellipse cx="420" cy="365" rx="35" ry="20" fill="#c9942e" opacity="0.15"/>
+  <circle cx="360" cy="385" r="15" fill="#3d2e1a" opacity="0.2"/>
+  <circle cx="440" cy="380" r="12" fill="#d4a843" opacity="0.1"/>
+  <!-- Small garnish dots -->
+  <circle cx="390" cy="355" r="4" fill="#8b6914" opacity="0.2"/>
+  <circle cx="410" cy="360" r="3" fill="#c9942e" opacity="0.18"/>
+  <circle cx="375" cy="365" r="3" fill="#d4a843" opacity="0.15"/>
+  <!-- Side plate -->
+  <ellipse cx="620" cy="400" rx="70" ry="45" fill="url(#g3Plate)"/>
+  <ellipse cx="620" cy="400" rx="70" ry="45" fill="none" stroke="#d4a843" stroke-width="1" opacity="0.1"/>
+  <rect x="600" y="385" width="40" height="20" rx="4" fill="#8b6914" opacity="0.15"/>
+  <!-- Napkin/utensil suggestion -->
+  <rect x="180" y="360" width="4" height="70" rx="1" fill="#f5e6c8" opacity="0.08"/>
+  <rect x="192" y="355" width="4" height="75" rx="1" fill="#f5e6c8" opacity="0.06"/>
+  <!-- Small bowl -->
+  <ellipse cx="220" cy="410" rx="45" ry="30" fill="url(#g3Plate)"/>
+  <ellipse cx="220" cy="410" rx="45" ry="30" fill="none" stroke="#c9942e" stroke-width="1" opacity="0.1"/>
+  <ellipse cx="220" cy="405" rx="30" ry="15" fill="#c9942e" opacity="0.08"/>
+  <!-- Atmospheric steam/warmth lines -->
+  <path d="M370,340 Q375,320 370,300" fill="none" stroke="#f5e6c8" stroke-width="1" opacity="0.06"/>
+  <path d="M400,335 Q405,315 400,295" fill="none" stroke="#f5e6c8" stroke-width="1" opacity="0.05"/>
+  <path d="M430,338 Q435,318 430,298" fill="none" stroke="#f5e6c8" stroke-width="1" opacity="0.06"/>
+  <!-- Ambient lighting from above -->
+  <ellipse cx="400" cy="50" rx="200" ry="40" fill="#c9942e" opacity="0.04"/>
+</svg>

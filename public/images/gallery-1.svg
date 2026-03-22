@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="g1Bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a1510"/>
+      <stop offset="100%" stop-color="#2a2015"/>
+    </linearGradient>
+    <radialGradient id="g1Lamp1" cx="200" cy="100" r="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#d4a843" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#d4a843" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g1Lamp2" cx="600" cy="100" r="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#c9942e" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#c9942e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="g1Bar" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3d2e1a"/>
+      <stop offset="100%" stop-color="#2a2015"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g1Bg)"/>
+  <!-- Warm overhead light glows suggesting interior lighting -->
+  <rect width="800" height="600" fill="url(#g1Lamp1)"/>
+  <rect width="800" height="600" fill="url(#g1Lamp2)"/>
+  <!-- Pendant light shapes -->
+  <line x1="200" y1="0" x2="200" y2="60" stroke="#8b6914" stroke-width="1" opacity="0.4"/>
+  <ellipse cx="200" cy="70" rx="25" ry="15" fill="#c9942e" opacity="0.15"/>
+  <line x1="600" y1="0" x2="600" y2="70" stroke="#8b6914" stroke-width="1" opacity="0.4"/>
+  <ellipse cx="600" cy="80" rx="20" ry="12" fill="#d4a843" opacity="0.12"/>
+  <!-- Bar counter -->
+  <rect x="0" y="380" width="800" height="8" fill="url(#g1Bar)" opacity="0.6"/>
+  <rect x="0" y="388" width="800" height="212" fill="#2a2015" opacity="0.5"/>
+  <!-- Back bar shelving suggestion -->
+  <rect x="100" y="180" width="600" height="2" fill="#8b6914" opacity="0.15"/>
+  <rect x="100" y="260" width="600" height="2" fill="#8b6914" opacity="0.12"/>
+  <rect x="100" y="340" width="600" height="2" fill="#8b6914" opacity="0.1"/>
+  <!-- Bottle shapes on shelves -->
+  <rect x="180" y="195" width="16" height="55" rx="3" fill="#3d2e1a" opacity="0.4"/>
+  <rect x="210" y="200" width="14" height="50" rx="3" fill="#c9942e" opacity="0.1"/>
+  <rect x="240" y="192" width="16" height="58" rx="3" fill="#3d2e1a" opacity="0.35"/>
+  <rect x="350" y="198" width="14" height="52" rx="3" fill="#d4a843" opacity="0.08"/>
+  <rect x="380" y="190" width="16" height="60" rx="3" fill="#3d2e1a" opacity="0.4"/>
+  <rect x="500" y="196" width="14" height="54" rx="3" fill="#c9942e" opacity="0.1"/>
+  <rect x="530" y="200" width="16" height="50" rx="3" fill="#3d2e1a" opacity="0.35"/>
+  <rect x="560" y="193" width="14" height="57" rx="3" fill="#d4a843" opacity="0.09"/>
+  <!-- Bar stool suggestions -->
+  <rect x="150" y="430" width="4" height="120" fill="#3d2e1a" opacity="0.3"/>
+  <rect x="130" y="420" width="44" height="10" rx="5" fill="#3d2e1a" opacity="0.25"/>
+  <rect x="350" y="440" width="4" height="110" fill="#3d2e1a" opacity="0.3"/>
+  <rect x="330" y="430" width="44" height="10" rx="5" fill="#3d2e1a" opacity="0.25"/>
+  <rect x="550" y="435" width="4" height="115" fill="#3d2e1a" opacity="0.3"/>
+  <rect x="530" y="425" width="44" height="10" rx="5" fill="#3d2e1a" opacity="0.25"/>
+  <!-- Warm ambient glow at bottom -->
+  <rect x="0" y="550" width="800" height="50" fill="#1a1510" opacity="0.4"/>
+</svg>

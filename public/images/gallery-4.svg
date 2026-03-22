@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="g4Bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a1510"/>
+      <stop offset="100%" stop-color="#2a2015"/>
+    </linearGradient>
+    <radialGradient id="g4Glow1" cx="250" cy="200" r="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#d4a843" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#d4a843" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g4Glow2" cx="550" cy="250" r="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#c9942e" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#c9942e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g4Bg)"/>
+  <rect width="800" height="600" fill="url(#g4Glow1)"/>
+  <rect width="800" height="600" fill="url(#g4Glow2)"/>
+  <!-- Table/gathering area -->
+  <ellipse cx="400" cy="420" rx="300" ry="100" fill="#3d2e1a" opacity="0.35"/>
+  <ellipse cx="400" cy="418" rx="300" ry="98" fill="none" stroke="#8b6914" stroke-width="1.5" opacity="0.12"/>
+  <!-- People silhouettes - abstract rounded shapes suggesting a group -->
+  <!-- Person 1 -->
+  <circle cx="200" cy="260" r="25" fill="#3d2e1a" opacity="0.5"/>
+  <ellipse cx="200" cy="330" rx="30" ry="50" fill="#3d2e1a" opacity="0.45"/>
+  <!-- Person 2 -->
+  <circle cx="310" cy="240" r="28" fill="#2a2015" opacity="0.55"/>
+  <ellipse cx="310" cy="315" rx="32" ry="55" fill="#2a2015" opacity="0.5"/>
+  <!-- Person 3 -->
+  <circle cx="420" cy="235" r="26" fill="#3d2e1a" opacity="0.5"/>
+  <ellipse cx="420" cy="310" rx="30" ry="52" fill="#3d2e1a" opacity="0.45"/>
+  <!-- Person 4 -->
+  <circle cx="530" cy="245" r="27" fill="#2a2015" opacity="0.55"/>
+  <ellipse cx="530" cy="320" rx="31" ry="53" fill="#2a2015" opacity="0.5"/>
+  <!-- Person 5 -->
+  <circle cx="630" cy="270" r="24" fill="#3d2e1a" opacity="0.5"/>
+  <ellipse cx="630" cy="340" rx="28" ry="48" fill="#3d2e1a" opacity="0.45"/>
+  <!-- Glasses on table -->
+  <rect x="260" y="390" width="14" height="25" rx="3" fill="#c9942e" opacity="0.12"/>
+  <rect x="380" y="385" width="16" height="28" rx="3" fill="#d4a843" opacity="0.1"/>
+  <rect x="500" y="392" width="14" height="24" rx="3" fill="#c9942e" opacity="0.12"/>
+  <!-- Warm overhead string lights -->
+  <line x1="50" y1="80" x2="750" y2="100" stroke="#8b6914" stroke-width="1" opacity="0.2"/>
+  <circle cx="150" cy="83" r="6" fill="#d4a843" opacity="0.25"/>
+  <circle cx="300" cy="88" r="5" fill="#c9942e" opacity="0.2"/>
+  <circle cx="450" cy="92" r="6" fill="#d4a843" opacity="0.25"/>
+  <circle cx="600" cy="96" r="5" fill="#c9942e" opacity="0.2"/>
+  <!-- Second string -->
+  <line x1="100" y1="130" x2="700" y2="145" stroke="#8b6914" stroke-width="1" opacity="0.15"/>
+  <circle cx="200" cy="133" r="5" fill="#d4a843" opacity="0.2"/>
+  <circle cx="375" cy="138" r="6" fill="#c9942e" opacity="0.22"/>
+  <circle cx="550" cy="142" r="5" fill="#d4a843" opacity="0.2"/>
+  <!-- Warm conversation energy - subtle radiating lines -->
+  <circle cx="400" cy="300" r="80" fill="none" stroke="#c9942e" stroke-width="0.5" opacity="0.06"/>
+  <circle cx="400" cy="300" r="120" fill="none" stroke="#d4a843" stroke-width="0.5" opacity="0.04"/>
+  <circle cx="400" cy="300" r="160" fill="none" stroke="#c9942e" stroke-width="0.5" opacity="0.03"/>
+</svg>
