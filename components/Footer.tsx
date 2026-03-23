@@ -1,7 +1,7 @@
 import { siteContent } from "@/content/site";
 
 export default function Footer() {
-  const { name, nav, socials, location, footer } = siteContent;
+  const { name, tagline, nav, socials, location, footer } = siteContent;
 
   return (
     <footer className="bg-charcoal-950 border-t border-charcoal-700">
@@ -13,15 +13,14 @@ export default function Footer() {
               {name}
             </span>
             <p className="mt-3 text-sm text-warm-gray-400 leading-relaxed">
-              Craft beer, wood-fired bites, and the warmest corner in the
-              neighborhood.
+              {tagline}
             </p>
           </div>
 
           {/* Quick links */}
           <div>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-cream-100">
-              Quick Links
+              {footer.quickLinksLabel}
             </h4>
             <ul className="space-y-2">
               {nav.map((link) => (
@@ -40,7 +39,7 @@ export default function Footer() {
           {/* Contact & socials */}
           <div>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-cream-100">
-              Contact
+              {footer.contactLabel}
             </h4>
             <address className="space-y-2 text-sm not-italic text-warm-gray-400">
               <p>{location.address}</p>

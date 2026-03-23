@@ -2,19 +2,19 @@ import { siteContent } from "@/content/site";
 import SectionHeading from "./SectionHeading";
 import CTAButton from "./CTAButton";
 
-export default function HoursLocation() {
-  const { hours, location } = siteContent;
+export default function Visit() {
+  const { visit, hours, location } = siteContent;
 
   return (
     <section className="bg-charcoal-900 py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <SectionHeading id="visit">Plan Your Visit</SectionHeading>
+        <SectionHeading id="visit">{visit.heading}</SectionHeading>
 
         <div className="mt-12 grid gap-12 lg:grid-cols-2">
           {/* Hours */}
           <div>
             <h3 className="font-heading text-xl font-semibold text-amber-400 mb-6">
-              Hours
+              {visit.hoursLabel}
             </h3>
             <table className="w-full">
               <tbody>
@@ -36,7 +36,7 @@ export default function HoursLocation() {
           {/* Location & map placeholder */}
           <div>
             <h3 className="font-heading text-xl font-semibold text-amber-400 mb-6">
-              Find Us
+              {visit.locationLabel}
             </h3>
 
             {/* Map placeholder */}
@@ -84,10 +84,10 @@ export default function HoursLocation() {
 
             <div className="mt-6 flex flex-wrap gap-3">
               <CTAButton href={`tel:${location.phone.replace(/\D/g, "")}`}>
-                Call Us
+                {visit.callCta}
               </CTAButton>
               <CTAButton href="#" variant="outline">
-                Get Directions
+                {visit.directionsCta}
               </CTAButton>
             </div>
           </div>

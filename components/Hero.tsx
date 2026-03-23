@@ -9,7 +9,7 @@ export default function Hero() {
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url(/images/hero-bg.svg)" }}
+        style={{ backgroundImage: `url(${hero.backgroundImage})` }}
       />
       {/* Overlay */}
       <div className="absolute inset-0 bg-charcoal-950/70" />
@@ -22,8 +22,8 @@ export default function Hero() {
           {hero.subheadline}
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <CTAButton href="#menu">{hero.primaryCta}</CTAButton>
-          <CTAButton href="#visit" variant="outline">
+          <CTAButton href={hero.primaryCtaHref}>{hero.primaryCta}</CTAButton>
+          <CTAButton href={hero.secondaryCtaHref} variant="outline">
             {hero.secondaryCta}
           </CTAButton>
         </div>

@@ -5,22 +5,22 @@ export interface NavLink {
   href: string;
 }
 
-export interface MenuItem {
+export interface OfferingItem {
   name: string;
   description: string;
   price: string;
-  tag?: string;
+  tag?: string; // e.g. "Popular", "New", "Seasonal"
 }
 
-export interface MenuCategory {
+export interface OfferingCategory {
   title: string;
-  items: MenuItem[];
+  items: OfferingItem[];
 }
 
-export interface Event {
-  day: string;
+export interface Highlight {
+  label: string; // Short badge text (e.g. "Mon", "01", "New")
   title: string;
-  time: string;
+  subtitle: string; // Secondary info (e.g. time, price range)
   description: string;
 }
 
@@ -35,180 +35,270 @@ export interface SocialLink {
 }
 
 export interface SiteContent {
+  // ── Business identity ──
   name: string;
   tagline: string;
+
+  // ── Page metadata (<head>) ──
+  meta: {
+    title: string;
+    description: string;
+  };
+
+  // ── Toggle sections on/off ──
+  sections: {
+    intro: boolean;
+    offerings: boolean;
+    highlights: boolean;
+    gallery: boolean;
+    visit: boolean;
+  };
+
+  // ── Navigation ──
+  // Update these to match whichever sections are enabled above.
   nav: NavLink[];
+
+  // ── Hero ──
   hero: {
     headline: string;
     subheadline: string;
+    backgroundImage: string; // Path to hero background (e.g. "/images/hero-bg.svg")
     primaryCta: string;
+    primaryCtaHref: string;
     secondaryCta: string;
+    secondaryCtaHref: string;
   };
-  about: {
+
+  // ── Intro ──
+  intro: {
     heading: string;
+    image: { src: string; alt: string };
     paragraphs: string[];
   };
-  menu: MenuCategory[];
-  events: Event[];
+
+  // ── Offerings (services, menu items, packages, etc.) ──
+  offerings: {
+    heading: string;
+    categories: OfferingCategory[];
+  };
+
+  // ── Highlights (events, features, promotions, etc.) ──
+  highlights: {
+    heading: string;
+    items: Highlight[];
+  };
+
+  // ── Gallery ──
   gallery: {
     heading: string;
     images: { src: string; alt: string }[];
   };
+
+  // ── Visit / Contact ──
+  visit: {
+    heading: string;
+    hoursLabel: string;
+    locationLabel: string;
+    callCta: string;
+    directionsCta: string;
+  };
+
   hours: HoursEntry[];
+
   location: {
     address: string;
     city: string;
     phone: string;
     email: string;
   };
+
+  // ── Social links ──
   socials: SocialLink[];
+
+  // ── Footer ──
   footer: {
+    quickLinksLabel: string;
+    contactLabel: string;
     disclaimer: string;
   };
 }
 
-// ── Content ──
+// ══════════════════════════════════════════════════════════════════════════════
+// EXAMPLE CONTENT — Replace everything below with your business details.
+// Images go in /public/images/. Update paths to match your filenames.
+// ══════════════════════════════════════════════════════════════════════════════
 
 export const siteContent: SiteContent = {
-  name: "Northside Taproom",
-  tagline: "Craft beer, good company, great neighborhood.",
+  name: "The Corner Spot",
+  tagline: "Great coffee, good people, your neighborhood.",
+
+  meta: {
+    title: "The Corner Spot — Coffee & Community",
+    description:
+      "Locally roasted coffee, fresh pastries, and a warm welcome. Visit The Corner Spot in Austin, TX.",
+  },
+
+  // Toggle sections on/off. Set to false to hide a section.
+  sections: {
+    intro: true,
+    offerings: true,
+    highlights: true,
+    gallery: true,
+    visit: true,
+  },
 
   nav: [
-    { label: "About", href: "#about" },
-    { label: "Menu", href: "#menu" },
-    { label: "Events", href: "#events" },
+    { label: "About", href: "#intro" },
+    { label: "Menu", href: "#offerings" },
+    { label: "Specials", href: "#highlights" },
     { label: "Gallery", href: "#gallery" },
     { label: "Visit", href: "#visit" },
   ],
 
   hero: {
-    headline: "Your Neighborhood\nTaproom",
+    headline: "Your Neighborhood\nCoffee Shop",
     subheadline:
-      "Twenty rotating taps, wood-fired bites, and the warmest corner in the neighborhood. Come as you are.",
-    primaryCta: "View Our Menu",
+      "Locally roasted coffee, fresh-baked pastries, and the warmest corner in the neighborhood. Come as you are.",
+    backgroundImage: "/images/hero-bg.svg",
+    primaryCta: "See Our Menu",
+    primaryCtaHref: "#offerings",
     secondaryCta: "Plan Your Visit",
+    secondaryCtaHref: "#visit",
   },
 
-  about: {
-    heading: "A Place to Gather",
+  intro: {
+    heading: "Our Story",
+    image: { src: "/images/about.svg", alt: "Inside our shop" },
     paragraphs: [
-      "Northside Taproom opened its doors in 2019 with a simple mission: give the neighborhood a place to slow down, share a pint, and actually talk to each other. We're tucked into a converted brick warehouse on the corner of Elm & 4th — the kind of spot where everybody knows your order.",
-      "Our twenty rotating taps showcase the best from local and regional craft breweries, alongside a curated selection of natural wines and house-made cocktails. Pair your drink with something from our wood-fired kitchen — think smoked wings, flatbreads, and the crispiest fries on this side of town.",
+      "The Corner Spot opened in 2020 with a simple idea: give the neighborhood a place to slow down, grab a great cup of coffee, and connect with the people around you. We're a small, independently owned shop on the corner of Main & 3rd — the kind of place where the baristas know your name.",
+      "We source our beans from local roasters, bake our pastries in-house every morning, and keep things simple. Whether you're here for a quick espresso or settling in for the afternoon with a book, you're always welcome.",
     ],
   },
 
-  menu: [
-    {
-      title: "On Tap",
-      items: [
-        {
-          name: "Northside IPA",
-          description: "Citrus-forward, dry-hopped West Coast IPA",
-          price: "$7",
-          tag: "House",
-        },
-        {
-          name: "Golden Hour Lager",
-          description: "Crisp, clean Czech-style pilsner",
-          price: "$6",
-        },
-        {
-          name: "Dark Corner Stout",
-          description: "Rich chocolate & coffee notes, smooth finish",
-          price: "$8",
-        },
-        {
-          name: "Seasonal Sour",
-          description: "Rotating fruit-forward kettle sour",
-          price: "$8",
-          tag: "Rotating",
-        },
-      ],
-    },
-    {
-      title: "From the Kitchen",
-      items: [
-        {
-          name: "Smoked Wings",
-          description: "Dry-rubbed, wood-smoked, choice of sauce",
-          price: "$14",
-          tag: "Popular",
-        },
-        {
-          name: "Margherita Flatbread",
-          description: "San Marzano, fresh mozz, basil, EVOO",
-          price: "$13",
-        },
-        {
-          name: "Taproom Fries",
-          description: "Triple-cooked, garlic aioli, parmesan",
-          price: "$9",
-        },
-        {
-          name: "Smash Burger",
-          description: "Double patty, American cheese, house pickles",
-          price: "$15",
-          tag: "Popular",
-        },
-      ],
-    },
-  ],
+  offerings: {
+    heading: "Our Menu",
+    categories: [
+      {
+        title: "Coffee & Drinks",
+        items: [
+          {
+            name: "House Drip",
+            description: "Single-origin, medium roast, brewed fresh every hour",
+            price: "$3",
+            tag: "Popular",
+          },
+          {
+            name: "Cortado",
+            description: "Double espresso with equal parts steamed milk",
+            price: "$4.50",
+          },
+          {
+            name: "Cold Brew",
+            description: "Slow-steeped 18 hours, smooth and bold",
+            price: "$5",
+          },
+          {
+            name: "Seasonal Latte",
+            description: "Rotating flavors made with house-made syrups",
+            price: "$5.50",
+            tag: "Seasonal",
+          },
+        ],
+      },
+      {
+        title: "From the Kitchen",
+        items: [
+          {
+            name: "Avocado Toast",
+            description: "Sourdough, smashed avocado, chili flakes, sea salt",
+            price: "$9",
+            tag: "Popular",
+          },
+          {
+            name: "Breakfast Sandwich",
+            description: "Farm egg, cheddar, arugula on a brioche bun",
+            price: "$8",
+          },
+          {
+            name: "Banana Bread",
+            description: "House-baked, warm, with salted butter",
+            price: "$4",
+          },
+          {
+            name: "Grain Bowl",
+            description: "Quinoa, roasted veggies, tahini dressing, soft egg",
+            price: "$12",
+          },
+        ],
+      },
+    ],
+  },
 
-  events: [
-    {
-      day: "Monday",
-      title: "Industry Night",
-      time: "5 PM – Close",
-      description:
-        "Half-off drafts for service industry workers. Bring your paystub or work shirt.",
-    },
-    {
-      day: "Wednesday",
-      title: "Trivia Night",
-      time: "7 PM – 9 PM",
-      description:
-        "Five rounds of general knowledge trivia. Winning team takes home a $50 bar tab.",
-    },
-    {
-      day: "Thursday",
-      title: "Vinyl & Vibes",
-      time: "6 PM – 10 PM",
-      description:
-        "Local DJs spin vinyl while you sip. Different genre every week.",
-    },
-    {
-      day: "Saturday",
-      title: "Brunch & Brews",
-      time: "11 AM – 2 PM",
-      description:
-        "Weekend brunch menu with bottomless mimosas and a special brunch beer flight.",
-    },
-  ],
+  highlights: {
+    heading: "What's Happening",
+    items: [
+      {
+        label: "Mon",
+        title: "Open Mic Morning",
+        subtitle: "7 AM – 10 AM",
+        description:
+          "Kick off the week with live acoustic sets from local musicians. Grab a coffee, grab a seat.",
+      },
+      {
+        label: "Wed",
+        title: "Latte Art Wednesday",
+        subtitle: "All Day",
+        description:
+          "Our baristas pull out the stops. Order any latte and get a work of art in your cup.",
+      },
+      {
+        label: "Fri",
+        title: "First Friday Pop-Up",
+        subtitle: "5 PM – 8 PM",
+        description:
+          "Local artists and vendors set up shop. Extended evening hours with wine and snacks.",
+      },
+      {
+        label: "Sat",
+        title: "Weekend Brunch",
+        subtitle: "9 AM – 2 PM",
+        description:
+          "Expanded brunch menu with bottomless drip coffee and fresh-squeezed juice.",
+      },
+    ],
+  },
 
   gallery: {
-    heading: "Inside the Taproom",
+    heading: "Our Space",
     images: [
-      { src: "/images/gallery-1.svg", alt: "Taproom interior with warm lighting and brick walls" },
-      { src: "/images/gallery-2.svg", alt: "Row of craft beer taps at the bar" },
-      { src: "/images/gallery-3.svg", alt: "Wood-fired flatbread fresh from the oven" },
-      { src: "/images/gallery-4.svg", alt: "Friends laughing over pints at a high-top table" },
-      { src: "/images/gallery-5.svg", alt: "Bartender pouring a golden lager from the tap" },
-      { src: "/images/gallery-6.svg", alt: "Outdoor patio seating on a summer evening" },
+      { src: "/images/gallery-1.svg", alt: "Bright interior with natural wood and plants" },
+      { src: "/images/gallery-2.svg", alt: "Espresso machine pulling a perfect shot" },
+      { src: "/images/gallery-3.svg", alt: "Fresh pastries displayed on the counter" },
+      { src: "/images/gallery-4.svg", alt: "Customers chatting at a communal table" },
+      { src: "/images/gallery-5.svg", alt: "Barista crafting a latte with care" },
+      { src: "/images/gallery-6.svg", alt: "Outdoor seating on a sunny afternoon" },
     ],
+  },
+
+  visit: {
+    heading: "Come See Us",
+    hoursLabel: "Hours",
+    locationLabel: "Find Us",
+    callCta: "Call Us",
+    directionsCta: "Get Directions",
   },
 
   hours: [
-    { days: "Monday – Thursday", hours: "4 PM – 12 AM" },
-    { days: "Friday", hours: "3 PM – 2 AM" },
-    { days: "Saturday", hours: "11 AM – 2 AM" },
-    { days: "Sunday", hours: "11 AM – 10 PM" },
+    { days: "Monday – Friday", hours: "6 AM – 6 PM" },
+    { days: "Saturday", hours: "7 AM – 5 PM" },
+    { days: "Sunday", hours: "8 AM – 3 PM" },
   ],
 
   location: {
-    address: "742 Elm Street",
-    city: "Portland, OR 97209",
-    phone: "(503) 555-0174",
-    email: "hello@northsidetaproom.com",
+    address: "210 Main Street",
+    city: "Austin, TX 78701",
+    phone: "(512) 555-0142",
+    email: "hello@thecornerspot.com",
   },
 
   socials: [
@@ -218,7 +308,9 @@ export const siteContent: SiteContent = {
   ],
 
   footer: {
+    quickLinksLabel: "Quick Links",
+    contactLabel: "Contact",
     disclaimer:
-      "This is a fictional demo website created as a portfolio piece. Northside Taproom is not a real business.",
+      "This is an example website built with the Local Business Starter template. The Corner Spot is not a real business.",
   },
 };

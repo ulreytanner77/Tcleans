@@ -1,10 +1,10 @@
-import type { MenuItem } from "@/content/site";
+import type { OfferingItem } from "@/content/site";
 
-interface MenuCardProps {
-  item: MenuItem;
+interface OfferingCardProps {
+  item: OfferingItem;
 }
 
-export default function MenuCard({ item }: MenuCardProps) {
+export default function OfferingCard({ item }: OfferingCardProps) {
   return (
     <div className="group rounded-xl border border-charcoal-700 bg-charcoal-800 p-6 transition-colors hover:border-amber-500/40">
       <div className="flex items-start justify-between gap-4">

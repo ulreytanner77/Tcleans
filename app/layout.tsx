@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
+import { siteContent } from "@/content/site";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -15,13 +16,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Northside Taproom — Craft Beer & Wood-Fired Bites",
-  description:
-    "Twenty rotating taps, wood-fired bites, and the warmest corner in the neighborhood. Visit Northside Taproom in Portland, OR.",
+  title: siteContent.meta.title,
+  description: siteContent.meta.description,
   openGraph: {
-    title: "Northside Taproom — Craft Beer & Wood-Fired Bites",
-    description:
-      "Twenty rotating taps, wood-fired bites, and the warmest corner in the neighborhood.",
+    title: siteContent.meta.title,
+    description: siteContent.meta.description,
     type: "website",
   },
 };
