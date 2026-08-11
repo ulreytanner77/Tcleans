@@ -9,10 +9,13 @@ export default function Gallery() {
   const { gallery } = siteContent;
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
+  // Gated — renders nothing when the images array is empty
+  if (gallery.images.length === 0) return null;
+
   return (
-    <section className="bg-charcoal-950 py-24">
+    <section className="bg-gray-100 py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <SectionHeading id="gallery">{gallery.heading}</SectionHeading>
+        <SectionHeading>{gallery.heading}</SectionHeading>
 
         {/* Image grid */}
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -28,7 +31,7 @@ export default function Gallery() {
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-charcoal-950/0 transition-colors group-hover:bg-charcoal-950/30" />
+              <div className="absolute inset-0 bg-brand-ink/0 transition-colors group-hover:bg-brand-ink/30" />
             </button>
           ))}
         </div>
@@ -37,7 +40,7 @@ export default function Gallery() {
       {/* Lightbox modal */}
       {lightboxIndex !== null && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-charcoal-950/90 p-6 backdrop-blur-sm animate-fade-in"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-brand-ink/90 p-6 backdrop-blur-sm animate-fade-in"
           onClick={() => setLightboxIndex(null)}
         >
           <div
@@ -47,7 +50,7 @@ export default function Gallery() {
             {/* Close button */}
             <button
               onClick={() => setLightboxIndex(null)}
-              className="absolute -top-12 right-0 text-cream-100 hover:text-amber-400 transition-colors"
+              className="absolute -top-12 right-0 text-white hover:text-brand-pink transition-colors"
               aria-label="Close lightbox"
             >
               <svg
@@ -74,7 +77,7 @@ export default function Gallery() {
                     gallery.images.length
                 )
               }
-              className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-charcoal-950/60 p-2 text-cream-100 hover:text-amber-400 transition-colors"
+              className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-brand-ink/60 p-2 text-white hover:text-brand-pink transition-colors"
               aria-label="Previous image"
             >
               <svg
@@ -98,7 +101,7 @@ export default function Gallery() {
                   (lightboxIndex + 1) % gallery.images.length
                 )
               }
-              className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-charcoal-950/60 p-2 text-cream-100 hover:text-amber-400 transition-colors"
+              className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-brand-ink/60 p-2 text-white hover:text-brand-pink transition-colors"
               aria-label="Next image"
             >
               <svg
@@ -127,7 +130,7 @@ export default function Gallery() {
             </div>
 
             {/* Caption */}
-            <p className="mt-4 text-center text-sm text-cream-200">
+            <p className="mt-4 text-center text-sm text-white/80">
               {gallery.images[lightboxIndex].alt}
             </p>
           </div>

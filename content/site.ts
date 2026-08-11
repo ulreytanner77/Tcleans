@@ -1,3 +1,20 @@
+// ══════════════════════════════════════════════════════════════════════════════
+// T CLEANS — Site Content
+//
+// PLACEHOLDERS TO FILL IN:
+//  1. Business email address (search: PLACEHOLDER_EMAIL)
+//  2. Business hours / availability window (search: PLACEHOLDER_HOURS)
+//  3. Whether to publish pricing — starting-at ranges vs "free quote only"
+//  4. 3–5 customer testimonials (add to testimonials array)
+//  5. Real before/after photos (add to gallery.images array)
+//  6. Licensed/insured/bonded status (search: PLACEHOLDER_LICENSE)
+//  7. Supplies policy — brings own? pet/kid safe? (search: PLACEHOLDER_SUPPLIES)
+//  8. Service radius limit and travel fee policy (search: PLACEHOLDER_TRAVEL)
+//  9. Formspree form ID for quote form (search: PLACEHOLDER_FORMSPREE)
+// 10. Real hero/about photos
+// 11. OG image — card/logo image for Facebook shares (search: PLACEHOLDER_OG)
+// ══════════════════════════════════════════════════════════════════════════════
+
 // ── Types ──
 
 export interface NavLink {
@@ -5,23 +22,23 @@ export interface NavLink {
   href: string;
 }
 
-export interface OfferingItem {
+export interface ServiceItem {
+  id: string;
   name: string;
   description: string;
-  price: string;
-  tag?: string; // e.g. "Popular", "New", "Seasonal"
+  checklist: string[];
 }
 
-export interface OfferingCategory {
-  title: string;
-  items: OfferingItem[];
-}
-
-export interface Highlight {
-  label: string; // Short badge text (e.g. "Mon", "01", "New")
-  title: string;
-  subtitle: string; // Secondary info (e.g. time, price range)
+export interface WhyUsItem {
+  icon: string; // SVG path or emoji identifier
+  label: string;
   description: string;
+}
+
+export interface Testimonial {
+  quote: string;
+  name: string;
+  location: string;
 }
 
 export interface HoursEntry {
@@ -38,6 +55,9 @@ export interface SiteContent {
   // ── Business identity ──
   name: string;
   tagline: string;
+  phone: string;
+  phoneRaw: string; // digits only for tel: links
+  ownerName: string;
 
   // ── Page metadata (<head>) ──
   meta: {
@@ -45,72 +65,67 @@ export interface SiteContent {
     description: string;
   };
 
-  // ── Toggle sections on/off ──
-  sections: {
-    intro: boolean;
-    offerings: boolean;
-    highlights: boolean;
-    gallery: boolean;
-    visit: boolean;
-  };
-
   // ── Navigation ──
-  // Update these to match whichever sections are enabled above.
   nav: NavLink[];
 
   // ── Hero ──
   hero: {
     headline: string;
     subheadline: string;
-    backgroundImage: string; // Path to hero background (e.g. "/images/hero-bg.svg")
     primaryCta: string;
     primaryCtaHref: string;
     secondaryCta: string;
     secondaryCtaHref: string;
   };
 
-  // ── Intro ──
+  // ── About / Intro ──
   intro: {
     heading: string;
     image: { src: string; alt: string };
     paragraphs: string[];
   };
 
-  // ── Offerings (services, menu items, packages, etc.) ──
-  offerings: {
-    heading: string;
-    categories: OfferingCategory[];
-  };
+  // ── Services ──
+  services: ServiceItem[];
 
-  // ── Highlights (events, features, promotions, etc.) ──
-  highlights: {
-    heading: string;
-    items: Highlight[];
-  };
+  // ── Why Choose Us (differentiators) ──
+  whyUs: WhyUsItem[];
 
-  // ── Gallery ──
+  // ── Testimonials (gated — renders nothing when empty) ──
+  testimonials: Testimonial[];
+
+  // ── Gallery (gated — renders nothing when empty) ──
   gallery: {
     heading: string;
     images: { src: string; alt: string }[];
   };
 
-  // ── Visit / Contact ──
-  visit: {
+  // ── Service Area ──
+  serviceArea: {
+    regionName: string;
+    regionDescription: string;
+    towns: string[];
+    travelNote: string;
+  };
+
+  // ── Quote Form ──
+  quoteForm: {
     heading: string;
-    hoursLabel: string;
-    locationLabel: string;
-    callCta: string;
-    directionsCta: string;
+    subheading: string;
+    formspreeId: string;
+    serviceOptions: string[];
+    frequencyOptions: string[];
+    submitLabel: string;
+    successMessage: string;
+    errorMessage: string;
   };
 
+  // ── FAQ ──
+  faq: { question: string; answer: string }[];
+
+  // ── Contact / Hours ──
   hours: HoursEntry[];
-
-  location: {
-    address: string;
-    city: string;
-    phone: string;
-    email: string;
-  };
+  email: string;
 
   // ── Social links ──
   socials: SocialLink[];
@@ -119,198 +134,276 @@ export interface SiteContent {
   footer: {
     quickLinksLabel: string;
     contactLabel: string;
-    disclaimer: string;
+  };
+
+  // ── SEO ──
+  seo: {
+    ogImage: string;
+    jsonLd: {
+      type: string[];
+      name: string;
+      telephone: string;
+      areaServed: string[];
+      openingHours: string;
+    };
   };
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
-// EXAMPLE CONTENT — Replace everything below with your business details.
-// Images go in /public/images/. Update paths to match your filenames.
+// SITE CONTENT
 // ══════════════════════════════════════════════════════════════════════════════
 
 export const siteContent: SiteContent = {
-  name: "The Corner Spot",
-  tagline: "Great coffee, good people, your neighborhood.",
+  name: "T Cleans",
+  tagline: "Residential & commercial cleaning in Southern Oregon.",
+  phone: "541-735-4265",
+  phoneRaw: "5417354265",
+  ownerName: "the owner", // Update with real name once confirmed
 
   meta: {
-    title: "The Corner Spot — Coffee & Community",
+    title: "T Cleans — House Cleaning Medford OR | Rogue Valley Cleaning Service",
     description:
-      "Locally roasted coffee, fresh pastries, and a warm welcome. Visit The Corner Spot in Austin, TX.",
-  },
-
-  // Toggle sections on/off. Set to false to hide a section.
-  sections: {
-    intro: true,
-    offerings: true,
-    highlights: true,
-    gallery: true,
-    visit: true,
+      "Professional residential and commercial cleaning in Medford, Ashland, Grants Pass, and the Rogue Valley. Charged by the job, not the hour. Get a free quote today.",
   },
 
   nav: [
-    { label: "About", href: "#intro" },
-    { label: "Menu", href: "#offerings" },
-    { label: "Specials", href: "#highlights" },
-    { label: "Gallery", href: "#gallery" },
-    { label: "Visit", href: "#visit" },
+    { label: "Services", href: "/services" },
+    { label: "About", href: "/about" },
+    { label: "Service Area", href: "/service-area" },
+    { label: "Contact", href: "/contact" },
   ],
 
   hero: {
-    headline: "Your Neighborhood\nCoffee Shop",
+    headline: "A Cleaner Home in\nSouthern Oregon",
     subheadline:
-      "Locally roasted coffee, fresh-baked pastries, and the warmest corner in the neighborhood. Come as you are.",
-    backgroundImage: "/images/hero-bg.svg",
-    primaryCta: "See Our Menu",
-    primaryCtaHref: "#offerings",
-    secondaryCta: "Plan Your Visit",
-    secondaryCtaHref: "#visit",
+      "Professional cleaning charged by the job, not the hour. Residential and commercial service across the Rogue Valley.",
+    primaryCta: "Get a Free Quote",
+    primaryCtaHref: "/contact",
+    secondaryCta: "Call 541-735-4265",
+    secondaryCtaHref: "tel:5417354265",
   },
 
   intro: {
-    heading: "Our Story",
-    image: { src: "/images/about.svg", alt: "Inside our shop" },
+    heading: "About T Cleans",
+    image: { src: "/images/about.svg", alt: "T Cleans owner at work" },
     paragraphs: [
-      "The Corner Spot opened in 2020 with a simple idea: give the neighborhood a place to slow down, grab a great cup of coffee, and connect with the people around you. We're a small, independently owned shop on the corner of Main & 3rd — the kind of place where the baristas know your name.",
-      "We source our beans from local roasters, bake our pastries in-house every morning, and keep things simple. Whether you're here for a quick espresso or settling in for the afternoon with a book, you're always welcome.",
+      "T Cleans is an owner-operated cleaning service based in Southern Oregon. Every job is handled personally — you get the same dedicated cleaner every visit, someone who learns your home and your preferences.",
+      "Detail-oriented and reliable, T Cleans charges by the job, not the hour, so you always know what to expect. Whether it's a recurring weekly clean or a one-time deep clean before move-out, every home gets the same thorough attention.",
     ],
   },
 
-  offerings: {
-    heading: "Our Menu",
-    categories: [
-      {
-        title: "Coffee & Drinks",
-        items: [
-          {
-            name: "House Drip",
-            description: "Single-origin, medium roast, brewed fresh every hour",
-            price: "$3",
-            tag: "Popular",
-          },
-          {
-            name: "Cortado",
-            description: "Double espresso with equal parts steamed milk",
-            price: "$4.50",
-          },
-          {
-            name: "Cold Brew",
-            description: "Slow-steeped 18 hours, smooth and bold",
-            price: "$5",
-          },
-          {
-            name: "Seasonal Latte",
-            description: "Rotating flavors made with house-made syrups",
-            price: "$5.50",
-            tag: "Seasonal",
-          },
-        ],
-      },
-      {
-        title: "From the Kitchen",
-        items: [
-          {
-            name: "Avocado Toast",
-            description: "Sourdough, smashed avocado, chili flakes, sea salt",
-            price: "$9",
-            tag: "Popular",
-          },
-          {
-            name: "Breakfast Sandwich",
-            description: "Farm egg, cheddar, arugula on a brioche bun",
-            price: "$8",
-          },
-          {
-            name: "Banana Bread",
-            description: "House-baked, warm, with salted butter",
-            price: "$4",
-          },
-          {
-            name: "Grain Bowl",
-            description: "Quinoa, roasted veggies, tahini dressing, soft egg",
-            price: "$12",
-          },
-        ],
-      },
-    ],
-  },
+  services: [
+    {
+      id: "recurring",
+      name: "Recurring Cleans",
+      description:
+        "Keep your home consistently clean with scheduled weekly, bi-weekly, or monthly visits. The same cleaner every time, learning your home and your preferences.",
+      checklist: [
+        "Dust all surfaces, shelves, and baseboards",
+        "Vacuum and mop all floors",
+        "Clean and sanitize kitchen counters and appliances",
+        "Scrub and disinfect bathrooms (tub, toilet, sink, mirrors)",
+        "Empty trash and replace liners",
+        "Wipe light switches and door handles",
+        "Tidy and straighten rooms",
+        "Spot-clean cabinet fronts",
+      ],
+    },
+    {
+      id: "deep-clean",
+      name: "Deep Cleans",
+      description:
+        "A thorough, top-to-bottom clean that reaches every corner. Perfect for a fresh start, seasonal refresh, or first-time service.",
+      checklist: [
+        "Everything in a recurring clean, plus:",
+        "Clean inside the oven and microwave",
+        "Wipe down inside cabinets and drawers",
+        "Scrub tile grout and shower doors",
+        "Wash baseboards and door frames",
+        "Clean ceiling fans and light fixtures",
+        "Detail kitchen and bathroom hardware",
+        "Clean window sills and tracks",
+        "Deep vacuum upholstered furniture",
+      ],
+    },
+    {
+      id: "move",
+      name: "Move-In / Move-Out Cleans",
+      description:
+        "Start fresh or leave it spotless. A comprehensive clean designed to meet landlord and property management expectations.",
+      checklist: [
+        "Full deep clean of every room",
+        "Clean inside all cabinets, closets, and drawers",
+        "Clean inside refrigerator and oven",
+        "Scrub all bathroom fixtures and tile",
+        "Wash all window sills, blinds, and tracks",
+        "Clean garage or utility areas (if included)",
+        "Remove cobwebs throughout",
+        "Polish fixtures and hardware",
+      ],
+    },
+    {
+      id: "commercial",
+      name: "Office & Commercial Cleans",
+      description:
+        "A clean, professional space for your employees and customers. Flexible scheduling to work around your business hours.",
+      checklist: [
+        "Dust and wipe all desks, tables, and work surfaces",
+        "Vacuum and mop all floor areas",
+        "Clean and restock restrooms",
+        "Empty all trash and recycling bins",
+        "Wipe phones, keyboards, and shared equipment",
+        "Clean break room and kitchen areas",
+        "Spot-clean glass and entryway doors",
+        "Flexible frequency: daily, weekly, or custom",
+      ],
+    },
+  ],
 
-  highlights: {
-    heading: "What's Happening",
-    items: [
-      {
-        label: "Mon",
-        title: "Open Mic Morning",
-        subtitle: "7 AM – 10 AM",
-        description:
-          "Kick off the week with live acoustic sets from local musicians. Grab a coffee, grab a seat.",
-      },
-      {
-        label: "Wed",
-        title: "Latte Art Wednesday",
-        subtitle: "All Day",
-        description:
-          "Our baristas pull out the stops. Order any latte and get a work of art in your cup.",
-      },
-      {
-        label: "Fri",
-        title: "First Friday Pop-Up",
-        subtitle: "5 PM – 8 PM",
-        description:
-          "Local artists and vendors set up shop. Extended evening hours with wine and snacks.",
-      },
-      {
-        label: "Sat",
-        title: "Weekend Brunch",
-        subtitle: "9 AM – 2 PM",
-        description:
-          "Expanded brunch menu with bottomless drip coffee and fresh-squeezed juice.",
-      },
-    ],
-  },
+  whyUs: [
+    {
+      icon: "user",
+      label: "Same Cleaner Every Visit",
+      description:
+        "T Cleans is owner-operated — the same person cleans your home every time. No rotating crews, no strangers.",
+    },
+    {
+      icon: "dollar",
+      label: "Charged by the Job",
+      description:
+        "You get a flat quote before any work starts. No hourly billing, no surprises on the invoice.",
+    },
+    {
+      icon: "quote",
+      label: "Free Quotes, No Pressure",
+      description:
+        "Every quote is free with no obligation. Know exactly what you're paying before you commit.",
+    },
+    {
+      icon: "calendar",
+      label: "Flexible Scheduling",
+      description:
+        "Weekly, bi-weekly, monthly, or one-time — your schedule, your preference.",
+    },
+    {
+      icon: "sparkle",
+      label: "Detail-Oriented Cleaning",
+      description:
+        "Every job gets the same thorough, careful attention. Baseboards, fixtures, the spots most services skip.",
+    },
+  ],
+
+  testimonials: [], // Add real testimonials — section is hidden until populated
 
   gallery: {
-    heading: "Our Space",
-    images: [
-      { src: "/images/gallery-1.svg", alt: "Bright interior with natural wood and plants" },
-      { src: "/images/gallery-2.svg", alt: "Espresso machine pulling a perfect shot" },
-      { src: "/images/gallery-3.svg", alt: "Fresh pastries displayed on the counter" },
-      { src: "/images/gallery-4.svg", alt: "Customers chatting at a communal table" },
-      { src: "/images/gallery-5.svg", alt: "Barista crafting a latte with care" },
-      { src: "/images/gallery-6.svg", alt: "Outdoor seating on a sunny afternoon" },
-    ],
+    heading: "My Work",
+    images: [], // Add real before/after photos — section is hidden until populated
   },
 
-  visit: {
-    heading: "Come See Us",
-    hoursLabel: "Hours",
-    locationLabel: "Find Us",
-    callCta: "Call Us",
-    directionsCta: "Get Directions",
+  serviceArea: {
+    regionName: "Rogue Valley & Southern Oregon",
+    regionDescription:
+      "T Cleans serves homes and businesses across the Rogue Valley in Southern Oregon. From Grants Pass to Ashland and everywhere in between.",
+    towns: [
+      "Medford",
+      "Central Point",
+      "Jacksonville",
+      "Talent",
+      "Phoenix",
+      "Ashland",
+      "Eagle Point",
+      "White City",
+      "Grants Pass",
+    ],
+    travelNote:
+      "Travel fees may apply for locations outside the core service area. Get in touch for details.", // PLACEHOLDER_TRAVEL
   },
+
+  quoteForm: {
+    heading: "Get a Free Quote",
+    subheading:
+      "Tell me about your space and I'll get back to you with a no-obligation quote.",
+    formspreeId: "PLACEHOLDER_FORMSPREE", // Replace with real Formspree form ID
+    serviceOptions: [
+      "Recurring Clean",
+      "Deep Clean",
+      "Move-In / Move-Out",
+      "Office / Commercial",
+    ],
+    frequencyOptions: ["One-time", "Weekly", "Bi-weekly", "Monthly"],
+    submitLabel: "Get a Free Quote",
+    successMessage:
+      "Thanks! Your quote request has been sent. I'll get back to you soon.",
+    errorMessage:
+      "Something went wrong. Please call 541-735-4265 or try again.",
+  },
+
+  faq: [
+    {
+      question: "How do you charge — by the hour or by the job?",
+      answer:
+        "By the job. You'll receive a flat quote before any work begins, so there are no surprises.",
+    },
+    {
+      question: "Do you bring your own cleaning supplies?",
+      answer:
+        "Yes — I bring all supplies and equipment needed for the job. If you have product preferences, just let me know.", // PLACEHOLDER_SUPPLIES
+    },
+    {
+      question: "Are you licensed and insured?",
+      answer:
+        "Please get in touch for details about licensing and insurance coverage.", // PLACEHOLDER_LICENSE
+    },
+    {
+      question: "How do I get a quote?",
+      answer:
+        "Fill out the form on the Contact page, call 541-735-4265, or send a text. Quotes are always free with no obligation.",
+    },
+    {
+      question: "Do you offer one-time cleanings?",
+      answer:
+        "Absolutely. Deep cleans, move-in/move-out cleans, and one-time visits are all available.",
+    },
+    {
+      question: "What areas do you serve?",
+      answer:
+        "T Cleans serves Medford, Central Point, Jacksonville, Talent, Phoenix, Ashland, Eagle Point, White City, and Grants Pass in the Rogue Valley.",
+    },
+  ],
 
   hours: [
-    { days: "Monday – Friday", hours: "6 AM – 6 PM" },
-    { days: "Saturday", hours: "7 AM – 5 PM" },
-    { days: "Sunday", hours: "8 AM – 3 PM" },
+    { days: "Monday – Friday", hours: "Available by appointment" }, // PLACEHOLDER_HOURS
+    { days: "Saturday", hours: "Available by appointment" },
+    { days: "Sunday", hours: "Closed" },
   ],
 
-  location: {
-    address: "210 Main Street",
-    city: "Austin, TX 78701",
-    phone: "(512) 555-0142",
-    email: "hello@thecornerspot.com",
-  },
+  email: "PLACEHOLDER_EMAIL", // Replace with real email
 
-  socials: [
-    { platform: "Instagram", href: "#" },
-    { platform: "Facebook", href: "#" },
-    { platform: "X", href: "#" },
-  ],
+  socials: [{ platform: "Facebook", href: "#" }], // Update with real Facebook URL
 
   footer: {
     quickLinksLabel: "Quick Links",
     contactLabel: "Contact",
-    disclaimer:
-      "This is an example website built with the Local Business Starter template. The Corner Spot is not a real business.",
+  },
+
+  seo: {
+    ogImage: "/images/og-card.png", // PLACEHOLDER_OG
+    jsonLd: {
+      type: ["LocalBusiness", "HouseCleaningService"],
+      name: "T Cleans",
+      telephone: "+1-541-735-4265",
+      areaServed: [
+        "Medford",
+        "Central Point",
+        "Jacksonville",
+        "Talent",
+        "Phoenix",
+        "Ashland",
+        "Eagle Point",
+        "White City",
+        "Grants Pass",
+      ],
+      openingHours: "Mo-Fr 08:00-17:00", // PLACEHOLDER_HOURS
+    },
   },
 };

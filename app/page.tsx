@@ -1,28 +1,26 @@
-import { siteContent } from "@/content/site";
-import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Intro from "@/components/Intro";
-import Offerings from "@/components/Offerings";
-import Highlights from "@/components/Highlights";
+import SwooshDivider from "@/components/SwooshDivider";
+import ServicesOverview from "@/components/ServicesOverview";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import ServiceAreaPreview from "@/components/ServiceAreaPreview";
+import Testimonials from "@/components/Testimonials";
+import QuoteCTA from "@/components/QuoteCTA";
 import Gallery from "@/components/Gallery";
-import Visit from "@/components/Visit";
-import Footer from "@/components/Footer";
 
 export default function Home() {
-  const { sections } = siteContent;
-
   return (
     <>
-      <Header />
-      <main>
-        <Hero />
-        {sections.intro && <Intro />}
-        {sections.offerings && <Offerings />}
-        {sections.highlights && <Highlights />}
-        {sections.gallery && <Gallery />}
-        {sections.visit && <Visit />}
-      </main>
-      <Footer />
+      <Hero />
+      <SwooshDivider fromColor="var(--color-brand-plum)" toColor="#ffffff" />
+      <ServicesOverview />
+      <SwooshDivider fromColor="#ffffff" toColor="var(--color-brand-plum)" flip />
+      <WhyChooseUs />
+      <SwooshDivider fromColor="var(--color-brand-plum)" toColor="#ffffff" />
+      <ServiceAreaPreview />
+      <Testimonials />
+      <Gallery />
+      <SwooshDivider fromColor="#ffffff" toColor="var(--color-brand-plum)" flip />
+      <QuoteCTA />
     </>
   );
 }

@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Montserrat, Inter } from "next/font/google";
 import { siteContent } from "@/content/site";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import MobileCallBar from "@/components/MobileCallBar";
+import JsonLd from "@/components/JsonLd";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
   display: "swap",
 });
@@ -16,12 +20,16 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: siteContent.meta.title,
+  title: {
+    template: "%s | T Cleans",
+    default: siteContent.meta.title,
+  },
   description: siteContent.meta.description,
   openGraph: {
     title: siteContent.meta.title,
     description: siteContent.meta.description,
     type: "website",
+    images: [siteContent.seo.ogImage],
   },
 };
 
@@ -33,9 +41,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${inter.variable} antialiased`}
+      className={`${montserrat.variable} ${inter.variable} antialiased`}
     >
-      <body className="min-h-dvh flex flex-col">{children}</body>
+      <head>
+        <JsonLd />
+      </head>
+      <body className="min-h-dvh flex flex-col">
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+        <MobileCallBar />
+      </body>
     </html>
   );
 }

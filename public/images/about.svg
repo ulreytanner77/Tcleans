@@ -1,47 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
-  <defs>
-    <linearGradient id="aboutBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2a2015"/>
-      <stop offset="50%" stop-color="#3d2e1a"/>
-      <stop offset="100%" stop-color="#1a1510"/>
-    </linearGradient>
-    <radialGradient id="aboutGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#c9942e" stop-opacity="0.2"/>
-      <stop offset="60%" stop-color="#8b6914" stop-opacity="0.08"/>
-      <stop offset="100%" stop-color="#1a1510" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="aboutAccent" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#d4a843"/>
-      <stop offset="100%" stop-color="#8b6914"/>
-    </linearGradient>
-  </defs>
-  <rect width="800" height="800" fill="url(#aboutBg)"/>
-  <rect width="800" height="800" fill="url(#aboutGlow)"/>
-  <!-- Warm geometric pattern suggesting craftsmanship -->
-  <circle cx="400" cy="400" r="200" fill="none" stroke="#c9942e" stroke-width="1.5" opacity="0.2"/>
-  <circle cx="400" cy="400" r="150" fill="none" stroke="#d4a843" stroke-width="1" opacity="0.15"/>
-  <circle cx="400" cy="400" r="100" fill="none" stroke="#c9942e" stroke-width="1" opacity="0.2"/>
-  <circle cx="400" cy="400" r="50" fill="#c9942e" opacity="0.1"/>
-  <!-- Cross lines through center -->
-  <line x1="200" y1="400" x2="600" y2="400" stroke="#d4a843" stroke-width="1" opacity="0.15"/>
-  <line x1="400" y1="200" x2="400" y2="600" stroke="#d4a843" stroke-width="1" opacity="0.15"/>
-  <!-- Corner accents -->
-  <rect x="60" y="60" width="80" height="2" fill="url(#aboutAccent)" opacity="0.3"/>
-  <rect x="60" y="60" width="2" height="80" fill="url(#aboutAccent)" opacity="0.3"/>
-  <rect x="660" y="60" width="80" height="2" fill="url(#aboutAccent)" opacity="0.3"/>
-  <rect x="738" y="60" width="2" height="80" fill="url(#aboutAccent)" opacity="0.3"/>
-  <rect x="60" y="738" width="80" height="2" fill="url(#aboutAccent)" opacity="0.3"/>
-  <rect x="60" y="660" width="2" height="80" fill="url(#aboutAccent)" opacity="0.3"/>
-  <rect x="660" y="738" width="80" height="2" fill="url(#aboutAccent)" opacity="0.3"/>
-  <rect x="738" y="660" width="2" height="80" fill="url(#aboutAccent)" opacity="0.3"/>
-  <!-- Warm rectangles suggesting wood/warmth -->
-  <rect x="150" y="300" width="50" height="200" rx="4" fill="#c9942e" opacity="0.06"/>
-  <rect x="600" y="280" width="50" height="240" rx="4" fill="#d4a843" opacity="0.05"/>
-  <rect x="300" y="150" width="200" height="40" rx="4" fill="#8b6914" opacity="0.06"/>
-  <rect x="280" y="610" width="240" height="40" rx="4" fill="#c9942e" opacity="0.05"/>
-  <!-- Small warm dots -->
-  <circle cx="250" cy="250" r="8" fill="#d4a843" opacity="0.12"/>
-  <circle cx="550" cy="250" r="6" fill="#c9942e" opacity="0.1"/>
-  <circle cx="250" cy="550" r="6" fill="#c9942e" opacity="0.1"/>
-  <circle cx="550" cy="550" r="8" fill="#d4a843" opacity="0.12"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" rx="16" fill="#f3f4f6"/>
+  <text x="200" y="190" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#9ca3af">Photo placeholder</text>
+  <text x="200" y="215" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#9ca3af">Replace with real photo</text>
 </svg>

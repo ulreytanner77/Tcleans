@@ -6,13 +6,13 @@ export default function Intro() {
   const { intro } = siteContent;
 
   return (
-    <section className="bg-charcoal-900 py-24">
+    <section className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <SectionHeading id="intro">{intro.heading}</SectionHeading>
+        <SectionHeading>{intro.heading}</SectionHeading>
 
         <div className="mt-12 grid items-center gap-12 lg:grid-cols-2">
           {/* Image */}
-          <div className="relative aspect-square overflow-hidden rounded-2xl animate-slide-up">
+          <div className="relative aspect-square overflow-hidden rounded-2xl bg-gray-100 animate-slide-up">
             <Image
               src={intro.image.src}
               alt={intro.image.alt}
@@ -24,7 +24,7 @@ export default function Intro() {
           {/* Text */}
           <div className="space-y-6 animate-slide-up">
             {intro.paragraphs.map((p, i) => (
-              <p key={i} className="text-sub text-cream-200 leading-relaxed">
+              <p key={i} className="text-sub text-gray-700 leading-relaxed">
                 {p}
               </p>
             ))}

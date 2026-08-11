@@ -1,70 +1,106 @@
+import Link from "next/link";
 import { siteContent } from "@/content/site";
 
 export default function Footer() {
-  const { name, tagline, nav, socials, location, footer } = siteContent;
+  const { name, tagline, nav, socials, phone, phoneRaw, email, serviceArea, footer } =
+    siteContent;
 
   return (
-    <footer className="bg-charcoal-950 border-t border-charcoal-700">
+    <footer className="bg-brand-plum text-white/80">
       <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>
-            <span className="font-heading text-xl font-bold text-amber-400">
+            <span className="font-heading text-xl font-bold text-white">
               {name}
             </span>
-            <p className="mt-3 text-sm text-warm-gray-400 leading-relaxed">
-              {tagline}
-            </p>
+            <p className="mt-3 text-sm leading-relaxed">{tagline}</p>
           </div>
 
           {/* Quick links */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-cream-100">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
               {footer.quickLinksLabel}
             </h4>
             <ul className="space-y-2">
               {nav.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
-                    className="text-sm text-warm-gray-400 transition-colors hover:text-amber-400"
+                    className="text-sm transition-colors hover:text-brand-pink"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact & socials */}
+          {/* Contact */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-cream-100">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
               {footer.contactLabel}
             </h4>
-            <address className="space-y-2 text-sm not-italic text-warm-gray-400">
-              <p>{location.address}</p>
-              <p>{location.city}</p>
-              <p>{location.phone}</p>
-            </address>
-            <div className="mt-4 flex gap-4">
-              {socials.map((s) => (
+            <div className="space-y-2 text-sm">
+              <p>
                 <a
-                  key={s.platform}
-                  href={s.href}
-                  className="text-sm text-warm-gray-400 transition-colors hover:text-amber-400"
-                  aria-label={s.platform}
+                  href={`tel:${phoneRaw}`}
+                  className="transition-colors hover:text-brand-pink"
+                  aria-label={`Call T Cleans at ${phone}`}
                 >
-                  {s.platform}
+                  {phone}
                 </a>
-              ))}
+              </p>
+              <p>
+                <a
+                  href={`sms:${phoneRaw}`}
+                  className="transition-colors hover:text-brand-pink"
+                  aria-label={`Text T Cleans at ${phone}`}
+                >
+                  Text me
+                </a>
+              </p>
+              {email !== "PLACEHOLDER_EMAIL" && (
+                <p>
+                  <a
+                    href={`mailto:${email}`}
+                    className="transition-colors hover:text-brand-pink"
+                  >
+                    {email}
+                  </a>
+                </p>
+              )}
+              <div className="mt-4 flex gap-4">
+                {socials.map((s) => (
+                  <a
+                    key={s.platform}
+                    href={s.href}
+                    className="text-sm transition-colors hover:text-brand-pink"
+                    aria-label={`${name} on ${s.platform}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {s.platform}
+                  </a>
+                ))}
+              </div>
             </div>
+          </div>
+
+          {/* Service Area */}
+          <div>
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
+              Service Area
+            </h4>
+            <p className="text-sm leading-relaxed">
+              {serviceArea.towns.join(" · ")}
+            </p>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 border-t border-charcoal-700 pt-8 text-center">
-          <p className="text-xs text-warm-gray-500">{footer.disclaimer}</p>
-          <p className="mt-2 text-xs text-warm-gray-500">
+        <div className="mt-12 border-t border-white/10 pt-8 text-center">
+          <p className="text-xs text-white/50">
             &copy; {new Date().getFullYear()} {name}. All rights reserved.
           </p>
         </div>

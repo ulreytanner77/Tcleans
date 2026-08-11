@@ -1,25 +1,23 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* ── Colors (oklch) ── */
-  --color-charcoal-950: oklch(0.15 0.01 60);
-  --color-charcoal-900: oklch(0.20 0.01 60);
-  --color-charcoal-800: oklch(0.25 0.015 60);
-  --color-charcoal-700: oklch(0.32 0.015 60);
+  /* ── T Cleans Brand Colors ── */
+  --color-brand-pink: oklch(0.65 0.27 350);       /* Bright accent — headings ≥24px, underlines, icon fills */
+  --color-brand-pink-deep: oklch(0.45 0.24 350);  /* Button fills, badges — passes 4.5:1 on white */
+  --color-brand-ink: oklch(0.18 0.02 280);         /* Body text, near-black */
+  --color-brand-plum: oklch(0.20 0.06 320);        /* Dark section backgrounds (hero, footer, CTA band) */
 
-  --color-amber-400: oklch(0.82 0.17 75);
-  --color-amber-500: oklch(0.75 0.16 65);
-  --color-amber-600: oklch(0.68 0.15 60);
-
-  --color-cream-50: oklch(0.97 0.01 90);
-  --color-cream-100: oklch(0.93 0.015 85);
-  --color-cream-200: oklch(0.88 0.02 80);
-
-  --color-warm-gray-400: oklch(0.65 0.02 70);
-  --color-warm-gray-500: oklch(0.55 0.02 65);
+  /* ── Neutral supporting tones ── */
+  --color-gray-100: oklch(0.96 0.005 260);
+  --color-gray-200: oklch(0.92 0.005 260);
+  --color-gray-300: oklch(0.87 0.005 260);
+  --color-gray-400: oklch(0.70 0.01 260);
+  --color-gray-500: oklch(0.55 0.01 260);
+  --color-gray-600: oklch(0.45 0.01 260);
+  --color-gray-700: oklch(0.35 0.01 260);
 
   /* ── Fonts ── */
-  --font-heading: var(--font-playfair);
+  --font-heading: var(--font-montserrat);
   --font-body: var(--font-inter);
 
   /* ── Animations ── */
@@ -29,12 +27,8 @@
 
 /* ── Keyframes ── */
 @keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slide-up {
@@ -54,9 +48,10 @@ html {
 }
 
 body {
-  background-color: oklch(0.15 0.01 60);
-  color: oklch(0.93 0.015 85);
+  background-color: #ffffff;
+  color: var(--color-brand-ink);
   font-family: var(--font-body), system-ui, sans-serif;
+  line-height: 1.75;
 }
 
 /* ── Responsive heading typography ── */
@@ -72,7 +67,7 @@ body {
 
 .text-sub {
   font-size: clamp(1.1rem, 2vw, 1.35rem);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* ── Scrollbar styling ── */
@@ -81,14 +76,36 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: oklch(0.15 0.01 60);
+  background: var(--color-gray-100);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.32 0.015 60);
+  background: var(--color-gray-400);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.55 0.02 65);
+  background: var(--color-gray-500);
+}
+
+/* ── Focus-visible outlines ── */
+:focus-visible {
+  outline: 2px solid var(--color-brand-pink-deep);
+  outline-offset: 2px;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
 }

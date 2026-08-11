@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { siteContent } from "@/content/site";
 
 export default function Header() {
@@ -16,28 +17,59 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 right-0 left-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-charcoal-950/95 backdrop-blur-sm shadow-lg" : "bg-transparent"
+        scrolled
+          ? "bg-white/95 backdrop-blur-sm shadow-lg"
+          : "bg-brand-plum/95 backdrop-blur-sm"
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <a href="#" className="font-heading text-xl font-bold text-amber-400">
+        <Link
+          href="/"
+          className={`font-heading text-xl font-bold ${
+            scrolled ? "text-brand-pink-deep" : "text-white"
+          }`}
+        >
           {siteContent.name}
-        </a>
+        </Link>
 
         {/* Desktop nav */}
-        <ul className="hidden gap-8 md:flex">
+        <div className="hidden items-center gap-8 md:flex">
           {siteContent.nav.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-sm tracking-wide text-cream-100 transition-colors hover:text-amber-400"
-              >
-                {link.label}
-              </a>
-            </li>
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`text-sm tracking-wide transition-colors ${
+                scrolled
+                  ? "text-brand-ink hover:text-brand-pink-deep"
+                  : "text-white/90 hover:text-white"
+              }`}
+            >
+              {link.label}
+            </Link>
           ))}
-        </ul>
+
+          {/* Phone */}
+          <a
+            href={`tel:${siteContent.phoneRaw}`}
+            className={`text-sm tracking-wide transition-colors ${
+              scrolled
+                ? "text-brand-ink hover:text-brand-pink-deep"
+                : "text-white/90 hover:text-white"
+            }`}
+            aria-label={`Call T Cleans at ${siteContent.phone}`}
+          >
+            {siteContent.phone}
+          </a>
+
+          {/* CTA */}
+          <Link
+            href="/contact"
+            className="rounded-lg bg-brand-pink-deep px-5 py-2.5 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
+          >
+            Free Quote
+          </Link>
+        </div>
 
         {/* Mobile hamburger */}
         <button
@@ -47,19 +79,19 @@ export default function Header() {
           aria-expanded={menuOpen}
         >
           <span
-            className={`block h-0.5 w-6 bg-cream-50 transition-transform duration-200 ${
-              menuOpen ? "translate-y-2 rotate-45" : ""
-            }`}
+            className={`block h-0.5 w-6 transition-transform duration-200 ${
+              scrolled ? "bg-brand-ink" : "bg-white"
+            } ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
           />
           <span
-            className={`block h-0.5 w-6 bg-cream-50 transition-opacity duration-200 ${
-              menuOpen ? "opacity-0" : ""
-            }`}
+            className={`block h-0.5 w-6 transition-opacity duration-200 ${
+              scrolled ? "bg-brand-ink" : "bg-white"
+            } ${menuOpen ? "opacity-0" : ""}`}
           />
           <span
-            className={`block h-0.5 w-6 bg-cream-50 transition-transform duration-200 ${
-              menuOpen ? "-translate-y-2 -rotate-45" : ""
-            }`}
+            className={`block h-0.5 w-6 transition-transform duration-200 ${
+              scrolled ? "bg-brand-ink" : "bg-white"
+            } ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
           />
         </button>
       </nav>
@@ -67,22 +99,48 @@ export default function Header() {
       {/* Mobile menu */}
       <div
         className={`overflow-hidden transition-all duration-300 md:hidden ${
-          menuOpen ? "max-h-80" : "max-h-0"
+          menuOpen ? "max-h-96" : "max-h-0"
         }`}
       >
-        <ul className="flex flex-col gap-4 bg-charcoal-950/95 px-6 pb-6 backdrop-blur-sm">
+        <div
+          className={`flex flex-col gap-4 px-6 pb-6 ${
+            scrolled ? "bg-white/95" : "bg-brand-plum/95"
+          } backdrop-blur-sm`}
+        >
           {siteContent.nav.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="block text-sm tracking-wide text-cream-100 transition-colors hover:text-amber-400"
-              >
-                {link.label}
-              </a>
-            </li>
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+              className={`block text-sm tracking-wide transition-colors ${
+                scrolled
+                  ? "text-brand-ink hover:text-brand-pink-deep"
+                  : "text-white/90 hover:text-white"
+              }`}
+            >
+              {link.label}
+            </Link>
           ))}
-        </ul>
+          <a
+            href={`tel:${siteContent.phoneRaw}`}
+            onClick={() => setMenuOpen(false)}
+            className={`block text-sm tracking-wide transition-colors ${
+              scrolled
+                ? "text-brand-ink hover:text-brand-pink-deep"
+                : "text-white/90 hover:text-white"
+            }`}
+            aria-label={`Call T Cleans at ${siteContent.phone}`}
+          >
+            {siteContent.phone}
+          </a>
+          <Link
+            href="/contact"
+            onClick={() => setMenuOpen(false)}
+            className="inline-block rounded-lg bg-brand-pink-deep px-5 py-2.5 text-center text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
+          >
+            Free Quote
+          </Link>
+        </div>
       </div>
     </header>
   );
