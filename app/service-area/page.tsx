@@ -41,16 +41,8 @@ export default function ServiceAreaPage() {
       <SwooshDivider fromColor="var(--color-brand-plum)" toColor="#ffffff" />
 
       {/* Town grid */}
-      <section className="relative overflow-hidden bg-white py-24">
-        {/* Ghost numeral */}
-        <div
-          className="pointer-events-none absolute -right-6 top-1/2 -translate-y-1/2 select-none font-heading text-[14rem] font-bold leading-none sm:text-[18rem] md:text-[22rem] text-brand-pink/[0.04]"
-          aria-hidden="true"
-        >
-          OR
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-4xl px-6">
+      <section className="bg-white py-24">
+        <div className="mx-auto max-w-4xl px-6">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {serviceArea.towns.map((town) => (
               <div

@@ -155,7 +155,7 @@ export interface SiteContent {
 
 export const siteContent: SiteContent = {
   name: "T Cleans",
-  tagline: "Residential & commercial cleaning in Southern Oregon.",
+  tagline: "A Clean Space Is A Happy Space",
   phone: "541-735-4265",
   phoneRaw: "5417354265",
   ownerName: "the owner", // Update with real name once confirmed
@@ -387,7 +387,7 @@ export const siteContent: SiteContent = {
   },
 
   seo: {
-    ogImage: "/images/og-card.png", // PLACEHOLDER_OG
+    ogImage: "/images/business-card.png",
     jsonLd: {
       type: ["LocalBusiness", "HouseCleaningService"],
       name: "T Cleans",

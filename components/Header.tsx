@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { siteContent } from "@/content/site";
 
 export default function Header() {
@@ -22,15 +23,16 @@ export default function Header() {
           : "bg-brand-plum/95 backdrop-blur-sm"
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
         {/* Logo */}
-        <Link
-          href="/"
-          className={`font-heading text-xl font-bold ${
-            scrolled ? "text-brand-pink-deep" : "text-white"
-          }`}
-        >
-          {siteContent.name}
+        <Link href="/" aria-label="T Cleans home">
+          <Image
+            src="/images/logo.png"
+            alt="T Cleans"
+            width={195}
+            height={190}
+            className="h-10 w-auto"
+          />
         </Link>
 
         {/* Desktop nav */}

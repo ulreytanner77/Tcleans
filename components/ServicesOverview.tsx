@@ -7,16 +7,8 @@ export default function ServicesOverview() {
   const { services } = siteContent;
 
   return (
-    <section className="relative overflow-hidden bg-white py-24">
-      {/* Ghost letter */}
-      <div
-        className="pointer-events-none absolute -right-4 top-1/2 -translate-y-1/2 select-none font-heading text-[14rem] font-bold leading-none sm:text-[18rem] text-brand-pink/[0.04]"
-        aria-hidden="true"
-      >
-        04
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
+    <section className="bg-white py-24">
+      <div className="mx-auto max-w-7xl px-6">
         <SectionHeading>What I Do</SectionHeading>
 
         <div className="mt-12 grid gap-8 sm:grid-cols-2">

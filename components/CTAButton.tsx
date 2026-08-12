@@ -2,7 +2,7 @@ import Link from "next/link";
 
 interface CTAButtonProps {
   href: string;
-  variant?: "primary" | "secondary" | "outline";
+  variant?: "primary" | "secondary" | "outline" | "light";
   children: React.ReactNode;
   ariaLabel?: string;
 }
@@ -14,6 +14,8 @@ const variantStyles = {
     "bg-brand-ink text-white hover:opacity-90 font-semibold",
   outline:
     "border-2 border-brand-pink-deep text-brand-pink-deep hover:bg-brand-pink-deep hover:text-white font-semibold",
+  light:
+    "bg-white text-brand-ink hover:bg-gray-100 font-semibold",
 };
 
 export default function CTAButton({

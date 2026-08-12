@@ -29,10 +29,13 @@ export default function ServiceCard({
   const textColor = isPlum ? "text-white" : "text-brand-ink";
   const bodyColor = isPlum ? "text-white/80" : "text-gray-600";
   const checklistColor = isPlum ? "text-white/90" : "text-gray-700";
-  const sparkleColor = isPlum ? "text-white/40" : "text-brand-pink";
-  const ghostColor = isPlum ? "text-white/[0.04]" : "text-brand-pink/[0.05]";
+  const sparkleColor = isPlum ? "text-brand-pink" : "text-brand-pink";
+  const ghostColor = isPlum ? "text-white/[0.08]" : "text-brand-pink/[0.08]";
 
-  const buttonVariant = isPlum ? "outline" : "primary";
+  // Alternate left/right positioning
+  const ghostLeft = index % 2 === 0;
+
+  const buttonVariant = isPlum ? "light" : "primary";
 
   // Split checklist into two columns
   const mid = Math.ceil(service.checklist.length / 2);
@@ -42,11 +45,13 @@ export default function ServiceCard({
   return (
     <section
       id={service.id}
-      className={`relative overflow-hidden scroll-mt-24 py-20 md:py-28 ${sectionBg}`}
+      className={`relative overflow-hidden scroll-mt-24 py-16 md:py-20 ${sectionBg}`}
     >
-      {/* Ghost numeral */}
+      {/* Ghost numeral — positioned top area, pulled in so it reads clearly */}
       <div
-        className={`pointer-events-none absolute -right-4 top-1/2 -translate-y-1/2 select-none font-heading text-[12rem] font-bold leading-none sm:text-[16rem] md:text-[20rem] ${ghostColor}`}
+        className={`pointer-events-none absolute top-6 select-none font-heading text-[8rem] font-bold leading-none sm:text-[10rem] md:text-[14rem] ${ghostColor} ${
+          ghostLeft ? "left-4 sm:left-8 md:left-12" : "right-4 sm:right-8 md:right-12"
+        }`}
         aria-hidden="true"
       >
         {ghostNumerals[index] ?? String(index + 1).padStart(2, "0")}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { siteContent } from "@/content/site";
 
 export default function Footer() {
@@ -11,10 +12,14 @@ export default function Footer() {
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>
-            <span className="font-heading text-xl font-bold text-white">
-              {name}
-            </span>
-            <p className="mt-3 text-sm leading-relaxed">{tagline}</p>
+            <Image
+              src="/images/logo.png"
+              alt="T Cleans"
+              width={195}
+              height={190}
+              className="h-16 w-auto"
+            />
+            <p className="mt-3 text-sm italic leading-relaxed">{tagline}</p>
           </div>
 
           {/* Quick links */}
