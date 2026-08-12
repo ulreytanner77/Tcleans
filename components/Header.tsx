@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { siteContent } from "@/content/site";
 
 export default function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -37,19 +39,25 @@ export default function Header() {
 
         {/* Desktop nav */}
         <div className="hidden items-center gap-8 md:flex">
-          {siteContent.nav.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-sm tracking-wide transition-colors ${
-                scrolled
-                  ? "text-brand-ink hover:text-brand-pink-deep"
-                  : "text-white/90 hover:text-white"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {siteContent.nav.map((link) => {
+            const isActive =
+              link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm tracking-wide transition-colors ${
+                  isActive
+                    ? "text-brand-pink font-semibold"
+                    : scrolled
+                      ? "text-brand-ink hover:text-brand-pink-deep"
+                      : "text-white/90 hover:text-white"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
 
           {/* Phone */}
           <a
@@ -109,20 +117,26 @@ export default function Header() {
             scrolled ? "bg-white/95" : "bg-brand-plum/95"
           } backdrop-blur-sm`}
         >
-          {siteContent.nav.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className={`block text-sm tracking-wide transition-colors ${
-                scrolled
-                  ? "text-brand-ink hover:text-brand-pink-deep"
-                  : "text-white/90 hover:text-white"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {siteContent.nav.map((link) => {
+            const isActive =
+              link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className={`block text-sm tracking-wide transition-colors ${
+                  isActive
+                    ? "text-brand-pink font-semibold"
+                    : scrolled
+                      ? "text-brand-ink hover:text-brand-pink-deep"
+                      : "text-white/90 hover:text-white"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
           <a
             href={`tel:${siteContent.phoneRaw}`}
             onClick={() => setMenuOpen(false)}
