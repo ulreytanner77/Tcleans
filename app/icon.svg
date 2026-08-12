@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#E91E8C"/>
-  <!-- House roofline -->
-  <path d="M16 4 L28 14 L26 14 L16 6 L6 14 L4 14 Z" fill="#ffffff"/>
-  <!-- T letter -->
-  <text x="16" y="26" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#ffffff">T</text>
-</svg>
