@@ -167,6 +167,7 @@ export const siteContent: SiteContent = {
   },
 
   nav: [
+    { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
     { label: "About", href: "/about" },
     { label: "Service Area", href: "/service-area" },
