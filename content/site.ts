@@ -297,8 +297,11 @@ export const siteContent: SiteContent = {
   testimonials: [], // Add real testimonials — section is hidden until populated
 
   gallery: {
-    heading: "My Work",
-    images: [], // Add real before/after photos — section is hidden until populated
+    heading: "The Work",
+    images: [
+      { src: "/images/gallery-before-1.jpeg", alt: "Shower floor — before cleaning" },
+      { src: "/images/gallery-after-1.jpeg", alt: "Shower floor — after cleaning" },
+    ],
   },
 
   serviceArea: {
@@ -323,7 +326,7 @@ export const siteContent: SiteContent = {
   quoteForm: {
     heading: "Get a Free Quote",
     subheading:
-      "Tell me about your space and I'll get back to you with a no-obligation quote.",
+      "Share details about your space and get a no-obligation quote.",
     formspreeId: "PLACEHOLDER_FORMSPREE", // Replace with real Formspree form ID
     serviceOptions: [
       "Recurring Clean",
@@ -334,7 +337,7 @@ export const siteContent: SiteContent = {
     frequencyOptions: ["One-time", "Weekly", "Bi-weekly", "Monthly"],
     submitLabel: "Get a Free Quote",
     successMessage:
-      "Thanks! Your quote request has been sent. I'll get back to you soon.",
+      "Thanks! Your quote request has been sent. T Cleans will be in touch soon.",
     errorMessage:
       "Something went wrong. Please call 541-735-4265 or try again.",
   },
@@ -348,17 +351,22 @@ export const siteContent: SiteContent = {
     {
       question: "Do you bring your own cleaning supplies?",
       answer:
-        "Yes — I bring all supplies and equipment needed for the job. If you have product preferences, just let me know.", // PLACEHOLDER_SUPPLIES
+        "Yes — all supplies and equipment are provided. Product preferences are always welcome.",
     },
     {
-      question: "Are you licensed and insured?",
+      question: "Is T Cleans licensed?",
       answer:
-        "Please get in touch for details about licensing and insurance coverage.", // PLACEHOLDER_LICENSE
+        "Yes, T Cleans is a licensed cleaning service.",
     },
     {
-      question: "How do I get a quote?",
+      question: "How does the quote process work?",
       answer:
         "Fill out the form on the Contact page, call 541-735-4265, or send a text. Quotes are always free with no obligation.",
+    },
+    {
+      question: "What does a cleaning cost?",
+      answer:
+        "Quotes start at a $150 base. Final pricing depends on the size and condition of the space. Every quote is free with no obligation.",
     },
     {
       question: "Do you offer one-time cleanings?",
@@ -373,12 +381,11 @@ export const siteContent: SiteContent = {
   ],
 
   hours: [
-    { days: "Monday – Friday", hours: "Available by appointment" }, // PLACEHOLDER_HOURS
-    { days: "Saturday", hours: "Available by appointment" },
-    { days: "Sunday", hours: "Closed" },
+    { days: "Monday – Friday", hours: "7:00 AM – 5:00 PM" },
+    { days: "Saturday – Sunday", hours: "Closed" },
   ],
 
-  email: "PLACEHOLDER_EMAIL", // Replace with real email
+  email: "T.cleans.rv@gmail.com",
 
   socials: [{ platform: "Facebook", href: "#" }], // Update with real Facebook URL
 
@@ -404,7 +411,7 @@ export const siteContent: SiteContent = {
         "White City",
         "Grants Pass",
       ],
-      openingHours: "Mo-Fr 08:00-17:00", // PLACEHOLDER_HOURS
+      openingHours: "Mo-Fr 07:00-17:00",
     },
   },
 };

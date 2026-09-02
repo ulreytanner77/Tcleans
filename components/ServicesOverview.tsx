@@ -9,7 +9,7 @@ export default function ServicesOverview() {
   return (
     <section className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <SectionHeading>What I Do</SectionHeading>
+        <SectionHeading>Services</SectionHeading>
 
         <div className="mt-12 grid gap-8 sm:grid-cols-2">
           {services.map((service) => (

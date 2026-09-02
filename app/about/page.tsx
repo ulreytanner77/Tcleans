@@ -133,10 +133,10 @@ export default function AboutPage() {
             <div className="rounded-2xl border border-gray-200 p-8 text-left">
               <Sparkle className="mb-4 h-6 w-6 text-brand-pink" />
               <h3 className="font-heading text-lg font-bold text-brand-ink">
-                Licensed & Insured
+                Licensed
               </h3>
               <p className="mt-2 text-gray-600 leading-relaxed">
-                Get in touch for details about licensing and insurance coverage.
+                T Cleans is a licensed cleaning service.
               </p>
             </div>
             <div className="rounded-2xl border border-gray-200 p-8 text-left">
@@ -145,7 +145,7 @@ export default function AboutPage() {
                 All Supplies Included
               </h3>
               <p className="mt-2 text-gray-600 leading-relaxed">
-                All cleaning supplies and equipment included. Have specific product preferences? Just let me know.
+                All cleaning supplies and equipment included. Product preferences are always welcome.
               </p>
             </div>
           </div>

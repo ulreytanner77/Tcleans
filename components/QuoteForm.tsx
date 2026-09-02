@@ -246,7 +246,7 @@ export default function QuoteForm() {
             value={formData.notes}
             onChange={handleChange}
             className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-brand-ink focus:border-brand-pink-deep focus:ring-1 focus:ring-brand-pink-deep focus:outline-none resize-y"
-            placeholder="Anything else I should know? (pets, access instructions, specific areas of concern, etc.)"
+            placeholder="Any additional details? (pets, access instructions, specific areas of concern, etc.)"
           />
         </div>
       </div>
