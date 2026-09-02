@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { siteContent } from "@/content/site";
 
 export default function QuoteForm() {
-  const { quoteForm } = siteContent;
+  const { quoteForm, email } = siteContent;
   const searchParams = useSearchParams();
   const serviceParam = searchParams.get("service") ?? "";
 
@@ -21,71 +21,33 @@ export default function QuoteForm() {
     notes: "",
   });
 
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setStatus("submitting");
 
-    try {
-      const res = await fetch(
-        `https://formspree.io/f/${quoteForm.formspreeId}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        }
-      );
+    const lines = [
+      `Name: ${formData.name}`,
+      `Phone: ${formData.phone}`,
+      formData.email ? `Email: ${formData.email}` : "",
+      `Address: ${formData.address}`,
+      `Service: ${formData.service}`,
+      formData.frequency ? `Frequency: ${formData.frequency}` : "",
+      formData.bedrooms ? `Bedrooms: ${formData.bedrooms}` : "",
+      formData.bathrooms ? `Bathrooms: ${formData.bathrooms}` : "",
+      formData.notes ? `\nAdditional Notes:\n${formData.notes}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
 
-      if (res.ok) {
-        setStatus("success");
-        setFormData({
-          name: "",
-          phone: "",
-          email: "",
-          address: "",
-          service: "",
-          bedrooms: "",
-          bathrooms: "",
-          frequency: "",
-          notes: "",
-        });
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
-  }
+    const subject = encodeURIComponent(`Quote Request from ${formData.name}`);
+    const body = encodeURIComponent(lines);
 
-  if (status === "success") {
-    return (
-      <div className="rounded-2xl border border-gray-200 bg-white p-8 text-center">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="mx-auto h-12 w-12 text-brand-pink"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-          />
-        </svg>
-        <p className="mt-4 text-lg font-semibold text-brand-ink">
-          {quoteForm.successMessage}
-        </p>
-      </div>
-    );
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
   }
 
   return (
@@ -251,17 +213,12 @@ export default function QuoteForm() {
         </div>
       </div>
 
-      {status === "error" && (
-        <p className="mt-4 text-sm text-red-600">{quoteForm.errorMessage}</p>
-      )}
-
       <div className="mt-8">
         <button
           type="submit"
-          disabled={status === "submitting"}
-          className="inline-block rounded-lg bg-brand-pink-deep px-8 py-3 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90 disabled:opacity-50"
+          className="inline-block rounded-lg bg-brand-pink-deep px-8 py-3 text-sm font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
         >
-          {status === "submitting" ? "Sending..." : quoteForm.submitLabel}
+          {quoteForm.submitLabel}
         </button>
       </div>
     </form>
