@@ -1,18 +1,10 @@
 // ══════════════════════════════════════════════════════════════════════════════
 // T CLEANS — Site Content
 //
-// PLACEHOLDERS TO FILL IN:
-//  1. Business email address (search: PLACEHOLDER_EMAIL)
-//  2. Business hours / availability window (search: PLACEHOLDER_HOURS)
-//  3. Whether to publish pricing — starting-at ranges vs "free quote only"
-//  4. 3–5 customer testimonials (add to testimonials array)
-//  5. Real before/after photos (add to gallery.images array)
-//  6. Licensed/insured/bonded status (search: PLACEHOLDER_LICENSE)
-//  7. Supplies policy — brings own? pet/kid safe? (search: PLACEHOLDER_SUPPLIES)
-//  8. Service radius limit and travel fee policy (search: PLACEHOLDER_TRAVEL)
-//  9. Formspree form ID for quote form (search: PLACEHOLDER_FORMSPREE)
-// 10. Real hero/about photos
-// 11. OG image — card/logo image for Facebook shares (search: PLACEHOLDER_OG)
+// STILL NEEDED:
+//  1. Customer testimonials (add to testimonials array)
+//  2. Real hero/about photos
+//  3. Domain name (set metadataBase in layout.tsx)
 // ══════════════════════════════════════════════════════════════════════════════
 
 // ── Types ──
@@ -112,12 +104,9 @@ export interface SiteContent {
   quoteForm: {
     heading: string;
     subheading: string;
-    formspreeId: string;
     serviceOptions: string[];
     frequencyOptions: string[];
     submitLabel: string;
-    successMessage: string;
-    errorMessage: string;
   };
 
   // ── FAQ ──
@@ -327,7 +316,6 @@ export const siteContent: SiteContent = {
     heading: "Get a Free Quote",
     subheading:
       "Share details about your space and get a no-obligation quote.",
-    formspreeId: "PLACEHOLDER_FORMSPREE", // Replace with real Formspree form ID
     serviceOptions: [
       "Recurring Clean",
       "Deep Clean",
@@ -336,10 +324,6 @@ export const siteContent: SiteContent = {
     ],
     frequencyOptions: ["One-time", "Weekly", "Bi-weekly", "Monthly"],
     submitLabel: "Get a Free Quote",
-    successMessage:
-      "Thanks! Your quote request has been sent. T Cleans will be in touch soon.",
-    errorMessage:
-      "Something went wrong. Please call 541-735-4265 or try again.",
   },
 
   faq: [
