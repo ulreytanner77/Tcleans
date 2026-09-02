@@ -158,7 +158,7 @@ export const siteContent: SiteContent = {
   tagline: "A Clean Space Is A Happy Space",
   phone: "541-735-4265",
   phoneRaw: "5417354265",
-  ownerName: "the owner", // Update with real name once confirmed
+  ownerName: "Tristen",
 
   meta: {
     title: "T Cleans — House Cleaning Medford OR | Rogue Valley Cleaning Service",
@@ -320,7 +320,7 @@ export const siteContent: SiteContent = {
       "Grants Pass",
     ],
     travelNote:
-      "Travel fees may apply for locations outside the core service area. Get in touch for details.", // PLACEHOLDER_TRAVEL
+      "Not sure if your area is covered? Reach out for details.",
   },
 
   quoteForm: {
