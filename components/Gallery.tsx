@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { siteContent } from "@/content/site";
 import SectionHeading from "./SectionHeading";
+import ScrollReveal from "./ScrollReveal";
 
 export default function Gallery() {
   const { gallery } = siteContent;
@@ -17,23 +18,40 @@ export default function Gallery() {
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeading>{gallery.heading}</SectionHeading>
 
-        {/* Image grid */}
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {gallery.images.map((img, i) => (
-            <button
-              key={img.src}
-              onClick={() => setLightboxIndex(i)}
-              className="group relative aspect-[4/3] overflow-hidden rounded-xl"
-            >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-brand-ink/0 transition-colors group-hover:bg-brand-ink/30" />
-            </button>
-          ))}
+        {/* Image grid — 2-col for small sets, 3-col for larger */}
+        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          {gallery.images.map((img, i) => {
+            const altLower = img.alt.toLowerCase();
+            const label = altLower.includes("before")
+              ? "Before"
+              : altLower.includes("after")
+                ? "After"
+                : null;
+
+            return (
+              <ScrollReveal key={img.src} delay={i * 150}>
+                <button
+                  onClick={() => setLightboxIndex(i)}
+                  className="group relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-gray-200 shadow-md transition-shadow hover:shadow-xl"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-brand-ink/0 transition-colors group-hover:bg-brand-ink/30" />
+
+                  {/* Before / After badge */}
+                  {label && (
+                    <span className="absolute top-3 left-3 rounded-full bg-brand-plum/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
+                      {label}
+                    </span>
+                  )}
+                </button>
+              </ScrollReveal>
+            );
+          })}
         </div>
       </div>
 

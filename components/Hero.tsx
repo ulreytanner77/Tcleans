@@ -6,7 +6,22 @@ export default function Hero() {
   const { hero } = siteContent;
 
   return (
-    <section className="relative flex min-h-dvh items-center justify-center overflow-hidden bg-brand-plum">
+    <section className="relative flex min-h-dvh items-center justify-center overflow-hidden bg-[radial-gradient(ellipse_at_30%_20%,oklch(0.28_0.08_320),oklch(0.20_0.06_320)_60%,oklch(0.16_0.05_300))]">
+      {/* Shimmer sweep */}
+      <div
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+        aria-hidden="true"
+      >
+        <div
+          className="absolute -inset-y-1/2 left-0 w-[200%] opacity-[0.07]"
+          style={{
+            background:
+              "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.6) 50%, transparent 60%)",
+            animation: "shimmer 8s ease-in-out infinite",
+          }}
+        />
+      </div>
+
       {/* Scattered sparkles */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <Sparkle className="absolute top-[15%] left-[8%] h-6 w-6 text-brand-pink/10" />

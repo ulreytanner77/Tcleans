@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { siteContent } from "@/content/site";
 import Sparkle from "@/components/Sparkle";
+import ScrollReveal from "@/components/ScrollReveal";
 import SwooshDivider from "@/components/SwooshDivider";
 import QuoteForm from "@/components/QuoteForm";
 import QuoteCTA from "@/components/QuoteCTA";
@@ -166,19 +167,21 @@ export default function ContactPage() {
 
             <div className="space-y-6">
               {faq.map((item, i) => (
-                <div key={i} className="rounded-2xl bg-white p-8">
-                  <div className="flex items-start gap-3">
-                    <Sparkle className="mt-1 h-4 w-4 shrink-0 text-brand-pink" />
-                    <div>
-                      <h3 className="font-heading text-lg font-bold text-brand-ink">
-                        {item.question}
-                      </h3>
-                      <p className="mt-2 text-gray-600 leading-relaxed">
-                        {item.answer}
-                      </p>
+                <ScrollReveal key={i} delay={i * 100}>
+                  <div className="rounded-2xl bg-white p-8">
+                    <div className="flex items-start gap-3">
+                      <Sparkle className="mt-1 h-4 w-4 shrink-0 text-brand-pink" />
+                      <div>
+                        <h3 className="font-heading text-lg font-bold text-brand-ink">
+                          {item.question}
+                        </h3>
+                        <p className="mt-2 text-gray-600 leading-relaxed">
+                          {item.answer}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
