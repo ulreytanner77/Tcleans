@@ -387,7 +387,7 @@ export const siteContent: SiteContent = {
 
   email: "T.cleans.rv@gmail.com",
 
-  socials: [{ platform: "Facebook", href: "#" }], // Update with real Facebook URL
+  socials: [{ platform: "Facebook", href: "https://www.facebook.com/share/18mH9MUNzX/" }],
 
   footer: {
     quickLinksLabel: "Quick Links",
