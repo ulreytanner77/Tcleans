@@ -19,7 +19,7 @@ export default function JsonLd() {
       addressRegion: "OR",
       addressCountry: "US",
     },
-    url: undefined,
+    url: "https://tcleans.com",
   };
 
   return (

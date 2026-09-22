@@ -20,6 +20,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://tcleans.com"),
   title: {
     template: "%s | T Cleans",
     default: siteContent.meta.title,

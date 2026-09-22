@@ -4,7 +4,6 @@
 // STILL NEEDED:
 //  1. Customer testimonials (add to testimonials array)
 //  2. Real hero/about photos
-//  3. Domain name (set metadataBase in layout.tsx)
 // ══════════════════════════════════════════════════════════════════════════════
 
 // ── Types ──
